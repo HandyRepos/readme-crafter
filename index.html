@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>README Crafter</title>
+  <meta name="description" content="Generate beautiful GitHub READMEs in seconds." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22%2300D1FF%22 d=%22M4 6h16M4 12h16M4 18h10%22/></svg>">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="container header">
+    <h1>README Crafter</h1>
+    <p class="sub">Generate polished GitHub READMEs (profile or project) — no login, no build, open source.</p>
+  </header>
+
+  <main class="container grid">
+    <section class="card">
+      <h2>Basics</h2>
+      <div class="row">
+        <label>Display name <input id="displayName" placeholder="e.g., Jack" /></label>
+        <label>GitHub username <input id="githubUser" placeholder="e.g., octocat" /></label>
+      </div>
+      <label>Headline <input id="headline" placeholder="Tech tinkerer. Builder of shiny things." /></label>
+      <label>Bio <textarea id="bio" rows="3" placeholder="Short bio..."></textarea></label>
+    </section>
+
+    <section class="card">
+      <h2>Links</h2>
+      <div class="row">
+        <label>Website <input id="website" placeholder="https://"/></label>
+        <label>Email <input id="email" placeholder="you@example.com"/></label>
+      </div>
+      <div class="row">
+        <label>Twitter <input id="twitter" placeholder="https://x.com/username"/></label>
+        <label>LinkedIn <input id="linkedin" placeholder="https://linkedin.com/in/username"/></label>
+      </div>
+      <label>YouTube <input id="youtube" placeholder="https://youtube.com/@channel"/></label>
+    </section>
+
+    <section class="card">
+      <h2>Tech Stack</h2>
+      <div class="row">
+        <input id="techInput" placeholder="Add a tag (e.g., React)" />
+        <button id="addTech" class="btn">Add</button>
+      </div>
+      <div id="techList" class="chips"></div>
+    </section>
+
+    <section class="card">
+      <h2>Projects</h2>
+      <div class="row">
+        <input id="projName" placeholder="Name" />
+        <input id="projUrl" placeholder="https://github.com/user/repo" />
+      </div>
+      <input id="projDesc" placeholder="Short description" />
+      <button id="addProject" class="btn">Add project</button>
+      <ul id="projList" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Options</h2>
+      <div class="row">
+        <label><input type="checkbox" id="viewCount" checked /> Profile views</label>
+        <label><input type="checkbox" id="stats" checked /> GitHub stats</label>
+        <label><input type="checkbox" id="topLangs" checked /> Top languages</label>
+        <label><input type="checkbox" id="trophies" /> Trophies</label>
+      </div>
+      <div class="row">
+        <label>Theme
+          <select id="theme">
+            <option>radical</option><option>tokyonight</option>
+            <option>dracula</option><option>gruvbox</option><option>onedark</option>
+          </select>
+        </label>
+        <label>Buy-me-a-coffee URL <input id="coffee" placeholder="https://buymeacoffee.com/you"/></label>
+      </div>
+    </section>
+
+    <section class="card full">
+      <div class="toolbar">
+        <button id="copyBtn" class="btn">Copy Markdown</button>
+        <button id="downloadBtn" class="btn">Download README.md</button>
+        <button id="resetBtn" class="btn btn-ghost">Reset</button>
+      </div>
+      <div class="preview">
+        <textarea id="markdown" readonly></textarea>
+        <div id="render" class="render"></div>
+      </div>
+      <p class="muted">Tip: For a <b>profile README</b>, create a repo named exactly your username and put README at the root.</p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>Made with ♥ • MIT</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
