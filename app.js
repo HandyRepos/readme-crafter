@@ -2,10 +2,10 @@
 const $ = (id) => document.getElementById(id);
 
 const state = {
-  profile: { displayName: "Jack", githubUser: "", headline: "Tech tinkerer. Builder of shiny things.", bio: "I like building fun tools and shipping quick." },
+  profile: { displayName: "", githubUser: "", headline: "", bio: "" },
   links: { website: "", email: "", twitter: "", linkedin: "", youtube: "" },
-  tech: ["React", "Node.js", "Python"],
-  projects: [{ name: "File Master", url: "https://github.com/yourname/file-master", description: "Open-source file conversion and streaming tool." }],
+  tech: [],
+  projects: [],
   options: { viewCount: true, stats: true, topLangs: true, trophies: false, theme: "radical", coffee: "" }
 };
 
@@ -25,9 +25,9 @@ function renderMarkdown(){
     coffee: o.coffee ? `[☕ Buy me a coffee](${o.coffee})` : ""
   };
 
-  const header = `# ${p.displayName}\n\n${p.headline}`;
+  const header = p.displayName ? `# ${p.displayName}\n\n${p.headline || ""}` : "";
   const views = shields.views ? `\n\n${shields.views}` : "";
-  const about = `\n\n## About Me\n${p.bio}`;
+  const about = p.bio ? `\n\n## About Me\n${p.bio}` : "";
 
   const contactLines = [
     l.website && `🌐 **Website:** ${l.website}`,
@@ -49,7 +49,6 @@ function renderMarkdown(){
 }
 
 function renderPreview(md){
-  // very light markdown to HTML (headings, bold, links, lists, paragraphs)
   let html = md
     .replace(/^### (.*$)/gim, '<h3>$1</h3>')
     .replace(/^## (.*$)/gim, '<h2>$1</h2>')
@@ -89,7 +88,6 @@ function connectInputs(){
     el.addEventListener('input', () => { fn(isBool ? el.checked : el.value); save(); renderMarkdown(); });
   });
 
-  // tech tags
   $("addTech").addEventListener('click', () => {
     const val = $("techInput").value.trim();
     if(!val) return;
@@ -98,7 +96,6 @@ function connectInputs(){
     save(); drawTech(); renderMarkdown();
   });
 
-  // projects
   $("addProject").addEventListener('click', () => {
     const name = $("projName").value.trim();
     const url = $("projUrl").value.trim();
@@ -109,7 +106,6 @@ function connectInputs(){
     save(); drawProjects(); renderMarkdown();
   });
 
-  // toolbar
   $("copyBtn").addEventListener('click', async () => {
     await navigator.clipboard.writeText($("markdown").value);
     alert('README copied to clipboard');
@@ -151,22 +147,6 @@ function init(){
   connectInputs();
   drawTech();
   drawProjects();
-  // preload UI from state
-  $("displayName").value = state.profile.displayName;
-  $("githubUser").value  = state.profile.githubUser;
-  $("headline").value    = state.profile.headline;
-  $("bio").value         = state.profile.bio;
-  $("website").value     = state.links.website;
-  $("email").value       = state.links.email;
-  $("twitter").value     = state.links.twitter;
-  $("linkedin").value    = state.links.linkedin;
-  $("youtube").value     = state.links.youtube;
-  $("viewCount").checked = state.options.viewCount;
-  $("stats").checked     = state.options.stats;
-  $("topLangs").checked  = state.options.topLangs;
-  $("trophies").checked  = state.options.trophies;
-  $("theme").value       = state.options.theme;
-  $("coffee").value      = state.options.coffee;
   renderMarkdown();
 }
 init();
