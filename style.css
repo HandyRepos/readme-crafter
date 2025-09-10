@@ -1,0 +1,27 @@
+:root { --bg:#0b0d10; --card:#12161b; --text:#e7edf3; --muted:#a8b3be; --border:#20242b; }
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui, Segoe UI, Roboto, Ubuntu, sans-serif}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.header{padding-top:32px;padding-bottom:8px}
+.header h1{margin:0 0 6px;font-size:28px}
+.sub{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px}
+.card.full{grid-column:1/-1}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+label{display:flex;flex:1;flex-direction:column;gap:6px}
+input,textarea,select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0e1216;color:var(--text)}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#141922;color:var(--text);cursor:pointer}
+.btn:hover{border-color:#2a3340}
+.btn-ghost{background:transparent}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{background:#0e1216;border:1px solid var(--border);padding:6px 10px;border-radius:999px;display:inline-flex;gap:8px;align-items:center}
+.chip button{background:transparent;border:none;color:var(--muted);cursor:pointer}
+.list{list-style:none;padding:0;margin:12px 0 0}
+.list li{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:#0e1216}
+.toolbar{display:flex;gap:8px;margin-bottom:8px}
+.preview{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#markdown{height:360px;resize:vertical;border-radius:10px;border:1px solid var(--border);background:#0e1216;color:var(--text);padding:12px}
+.render{height:360px;overflow:auto;border-radius:10px;border:1px solid var(--border);background:#0e1216;padding:12px}
+.muted{color:var(--muted)}
+.footer{padding:24px;color:var(--muted)}
+@media (max-width: 900px){.grid{grid-template-columns:1fr}.preview{grid-template-columns:1fr}}
