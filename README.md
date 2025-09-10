@@ -9,9 +9,6 @@ Generate beautiful GitHub READMEs (profile or project) in seconds. Zero-build, z
 ## Local dev
 Just open `index.html` in a browser. No deps.
 
-## Deploy on GitHub Pages
-This repo includes a Pages workflow. Push to `main`, then go to **Settings → Pages** and set **Source: GitHub Actions**. Your URL will appear on the workflow run.
-
 ## Contribute
 PRs welcome: accessibility, UI polish, new templates (profile vs project), import/export JSON, etc.
 
